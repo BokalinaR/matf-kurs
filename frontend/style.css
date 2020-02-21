@@ -1,0 +1,104 @@
+.body {
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 800px;
+}
+
+.gornjaNavigacija {
+    height: 50px;
+    width: 900px;
+    background-color: #a5e6cd;
+    position: absolute;
+}
+
+.donjaNavigacija {
+    height: 120px;
+    width: 900px;
+    top: 50px;
+    position: absolute;
+    background-color: #a5e6cd;
+    box-sizing: border-box;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.slika {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    box-sizing: border-box;
+    border: 5px solid green;
+}
+
+.slika1 {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    box-sizing: border-box;
+    border: 5px solid green;
+}
+
+.centralniDeo {
+    height: 500px;
+    width: 900px;
+    position: relative;
+    top: 160px;
+    background-color: #5F9EA0;
+}
+
+.computer {
+    height: 500px;
+    width: 450px;
+    position: absolute;
+    text-align: center;
+    box-sizing: border-box;
+    border-right: 2.5px solid black;
+}
+
+.igrac {
+    height: 500px;
+    width: 450px;
+    position: absolute;
+    left: 450px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 5px;
+    border-left: 2.5px solid black;
+}
+
+.text1 {
+    font-family: sans-serif;
+    color: black;
+    font-size: 50px;
+    position: relative;
+    top: 300px
+}
+
+#nereseno {
+    font-family: sans-serif;
+    color: red;
+    font-size: 50px;
+    position: relative;
+    top: 400px;
+    left: 300px
+}
+
+#text {
+    font-family: sans-serif;
+    color: green;
+    font-size: 25px;
+    position: relative;
+}
+
+#racunar {
+    position: absolute;
+    top: 150px;
+    left: 125px
+}
+
+#korisnik {
+    position: absolute;
+    top: 150px;
+    left: 125px
+}
