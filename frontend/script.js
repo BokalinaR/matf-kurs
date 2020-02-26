@@ -38,6 +38,9 @@ function izracunaj() {
     let comp = list[Math.floor(Math.random() * list.length)];
     show(comp);
 
+    document.getElementById("racunar").hidden = false;
+    document.getElementById("korisnik").hidden = false;
+
     let kor = korisnik.dataset.framework;
     let komp = comp.dataset.framework;
 
@@ -49,7 +52,7 @@ function izracunaj() {
         //alert('Izjednaceno');
     } else if (kor == 'p') {
         if (komp == 'k') {
-            document.getElementById('kor').style.display = "block"; //"initial";
+            document.getElementById('kor').style.display = "block";
             document.getElementById('comp').style.display = "none";
             document.getElementById('nereseno').style.display = "none";
             pobeda_korisnik++;
@@ -93,16 +96,18 @@ function izracunaj() {
 
     console.log(runda);
 
-    if (runda === 3) {
+    if (runda === 5) {
         if (pobeda_korisnik > pobeda_racunar) {
+            alert("YOU WIN, CONGRATULATIONS!")
             posaljiRezultat(ime, pobeda_korisnik);
-            restart();
         } else {
-            alert("Racunar je pobedio!");
-            restart();
+            alert("Computer win!");
         }
 
+
+        restart();
     }
+
 }
 
 function show(obj) {
@@ -129,6 +134,9 @@ function restart() {
     document.getElementById('comp').style.display = "none";
     document.getElementById('nereseno').style.display = "none";
 
+    document.getElementById('racunar').hidden = true;
+    document.getElementById('korisnik').hidden = true;
+
     ucitajIme();
     console.log(ime);
 }
@@ -154,23 +162,3 @@ const posaljiRezultat = async(ime, rez) => {
         console.error(err);
     }
 }
-
-/*
-const getResult = async() => {
-    try {
-        const URL = 'http://localhost:3002/';
-        const response = await fetch(URL, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const jsonResponse = await response.json();
-        console.log(jsonResponse);
-
-    } catch (err) {
-        console.log(err);
-    }
-};
-// ovde je kraj
-*/

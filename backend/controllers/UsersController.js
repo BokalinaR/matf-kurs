@@ -2,45 +2,45 @@ const util = require('util');
 const MongoDBService = require('../services/MongoDBService');
 const ObjectId = require('mongodb').ObjectID;
 class UsersController {
-  constructor(request, response) {
-    this.request = request;
-    this.response = response;
+    constructor(request, response) {
+        this.request = request;
+        this.response = response;
 
-    this.mongoDBService = new MongoDBService('mongodb://root:example@localhost:27017', 'memory-game');
-  }
+        this.mongoDBService = new MongoDBService('mongodb://root:example@localhost:27017', 'rock-paper-scissors-game');
+    }
 
-  static registerRoutes(app) {
-    app.get('/', (request, response) => {
-      new UsersController(request, response).getUsers();
-    });
+    static registerRoutes(app) {
+        app.get('/', (request, response) => {
+            new UsersController(request, response).getUsers();
+        });
 
 
-    app.post('/', (request, response) => {
-      new UsersController(request, response).postUsers();
-    });
-  }
-  
-  async getUsers() {
-    await this.mongoDBService.connect();
+        app.post('/', (request, response) => {
+            new UsersController(request, response).postUsers();
+        });
+    }
 
-    let users = await this.mongoDBService.find('scores');
+    async getUsers() {
+        await this.mongoDBService.connect();
 
-    this.mongoDBService.disconnect();
-    this.response.send(users);
-  }
+        let users = await this.mongoDBService.find('scores');
 
-  async postUsers() {
-    await this.mongoDBService.connect();
+        this.mongoDBService.disconnect();
+        this.response.send(users);
+    }
 
-    await this.mongoDBService.insert('scores', {
-      name: this.request.body.name,
-      score: parseFloat(this.request.body.score),
-      date: new Date() 
-    });
+    async postUsers() {
+        await this.mongoDBService.connect();
 
-    this.mongoDBService.disconnect();
-    this.response.json({ status: 'Success' });
-  }
+        await this.mongoDBService.insert('scores', {
+            name: this.request.body.name,
+            score: parseFloat(this.request.body.score),
+            date: new Date()
+        });
+
+        this.mongoDBService.disconnect();
+        this.response.json({ status: 'Success' });
+    }
 }
 
 module.exports = UsersController;
